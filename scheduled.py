@@ -21,7 +21,8 @@ def sendMessage(slack_client, msg):
     logging.error(e.response)
 
 if __name__ == "__main__":
-  SLACK_BOT_TOKEN = os.environ['SLACK_BOT_TOKEN']
+  SLACK_BOT_TOKEN = os.environ['REMINDER_SLACK_TOKEN']
+## This token is stored in the ~/.zshrc file in the top-level directory
   slack_client = WebClient(SLACK_BOT_TOKEN)
   logging.debug("authorized slack client")
 
