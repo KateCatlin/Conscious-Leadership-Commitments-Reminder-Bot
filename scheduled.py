@@ -7,33 +7,18 @@ from slack_sdk.errors import SlackApiError
 
 logging.basicConfig(level=logging.DEBUG)
 
-def sendFirstCommitment(slack_client, commitment1):
+def sendCommitment(slack_client, commitment):
   # make the POST request through the python slack client
   
   # check if the request was a success
   try:
     slack_client.chat_postMessage(
       channel='#test',
-      text=commitment1
+      text=commitment
     )#.get()
   except SlackApiError as e:
     logging.error('Request to Slack API Failed: {}.'.format(e.response.status_code))
     logging.error(e.response)
-
-
-def sendSecondCommitment(slack_client, commitment2):
-  # make the POST request through the python slack client
-  
-  # check if the request was a success
-  try:
-    slack_client.chat_postMessage(
-      channel='#test',
-      text=commitment2
-    )#.get()
-  except SlackApiError as e:
-    logging.error('Request to Slack API Failed: {}.'.format(e.response.status_code))
-    logging.error(e.response)
-
 
 
 if __name__ == "__main__":
@@ -59,9 +44,9 @@ if __name__ == "__main__":
   commitment15 = "*Daily Conscious Leadership commitment reminder: Being the Resolution.* I commit to being the resolution or solution that is needed: seeing what is missing in the world as an invitation to become that which is required."
 
 
-  schedule.every(5).seconds.do(lambda: sendSecondCommitment(slack_client, commitment1))
+  schedule.every(5).seconds.do(lambda: sendCommitment(slack_client, commitment1))
   time.sleep(3)
-  schedule.every(5).seconds.do(lambda: sendSecondCommitment(slack_client, commitment2))
+  schedule.every(5).seconds.do(lambda: sendCommitment(slack_client, commitment2))
 
 
   logging.info("entering loop")
