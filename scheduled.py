@@ -26,13 +26,11 @@ if __name__ == "__main__":
   slack_client = WebClient(SLACK_BOT_TOKEN)
   logging.debug("authorized slack client")
 
-  # # For testing
-  msg = "Good Morning!"
-  schedule.every(60).seconds.do(lambda: sendMessage(slack_client, msg))
+  msg = "*Daily Conscious Leadership commitment reminder: Responsibility*. I commit to taking full responsibility for the circumstances of my life, and my physical, emotional, mental and spiritual wellbeing. I commit to support others to take full responsibility for their lives."
+  schedule.every(15).seconds.do(lambda: sendMessage(slack_client, msg))
 
-  # schedule.every().monday.at("13:15").do(lambda: sendMessage(slack_client, msg))
   logging.info("entering loop")
 
   while True:
     schedule.run_pending()
-    time.sleep(5) # sleep for 5 seconds between checks on the scheduler
+    time.sleep(1) # sleep for 1 second between checks
