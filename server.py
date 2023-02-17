@@ -21,7 +21,7 @@ def command():
 
   # # send user a response via DM
   # im_id = slack_client.im_open(user=info["user_id"])["channel"]["id"]
-  # ownercommitment = slack_client.chat_postMessage(
+  # ownerMsg = slack_client.chat_postMessage(
   #   channel=im_id,
   #   text=commander.getMessage()
   # )
